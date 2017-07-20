@@ -8,6 +8,10 @@
 - **Spatial Locality** - using data that is close together in memory 
 - **Sequential Locality** - using data that is linear in memory 
 
+# Memory Layput 
+
+- [Data Structure Alignment](https://en.wikipedia.org/wiki/Data_structure_alignment)
+
 # Memory friendly data-structures
 
 - [Judy Arrays](http://judy.sourceforge.net/)
