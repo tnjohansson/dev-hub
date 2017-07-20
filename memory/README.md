@@ -11,13 +11,13 @@
 
 # Memory Layout 
 
-- [Data Structure Alignment](https://en.wikipedia.org/wiki/Data_structure_alignment)
+- [Data structure alignment](https://en.wikipedia.org/wiki/Data_structure_alignment)
 - [Translation lookaside buffer](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)
 
 # Memory friendly data-structures
 
-- [Judy Arrays](http://judy.sourceforge.net/)
+- [Judy arrays](http://judy.sourceforge.net/)
 - [kD-tree](http://pointclouds.org/documentation/tutorials/kdtree_search.php)
-- [Z-Order Curve](https://gist.github.com/jaredwinick/5073432)
+- [Z-order curve](https://gist.github.com/jaredwinick/5073432)
 
 
