@@ -8,4 +8,10 @@
 - **Spatial Locality** - using data that is close together in memory 
 - **Sequential Locality** - using data that is linear in memory 
 
+# Memory friendly data-structures
+
+- [Judy Arrays](http://judy.sourceforge.net/)
+- [kD-tree](http://pointclouds.org/documentation/tutorials/kdtree_search.php)
+- [Z-Order Curve](https://gist.github.com/jaredwinick/5073432)
+
 
