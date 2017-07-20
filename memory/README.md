@@ -9,9 +9,10 @@
 - **Spatial Locality** - using data that is close together in memory 
 - **Sequential Locality** - using data that is linear in memory 
 
-# Memory Layput 
+# Memory Layout 
 
 - [Data Structure Alignment](https://en.wikipedia.org/wiki/Data_structure_alignment)
+- [Translation lookaside buffer](https://en.wikipedia.org/wiki/Translation_lookaside_buffer)
 
 # Memory friendly data-structures
 
