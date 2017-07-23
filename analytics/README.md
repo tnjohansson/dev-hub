@@ -5,4 +5,4 @@ Interactive Visualisations
 
 Supporting math 
 
-- [Computational Linear Algebra](http://www.fast.ai/2017/07/17/num-lin-alg)
+- [Numerical Linear Algebra for Coders](https://github.com/fastai/numerical-linear-algebra)
