@@ -14,3 +14,10 @@ _The term floating point refers to the fact that a number's radix point (decimal
 
 - [Software Engineering Advice from
 Building Large-Scale Distributed Systems](http://static.googleusercontent.com/media/research.google.com/en/us/people/jeff/stanford-295-talk.pdf)
+
+
+http://blog.omega-prime.co.uk/?p=197
+
+[CRDT Resources](https://syncfree.lip6.fr/index.php/crdt-resources)
+
+[How Hash Algorithms Work](http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software)
