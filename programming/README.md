@@ -1,5 +1,6 @@
 
 - [Latency Numbers Every Programmer Should Know](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
+- [Everything You Always Wanted to Know About Fsync](http://blog.httrack.com/blog/2013/11/15/everything-you-always-wanted-to-know-about-fsync/)
 
 # Floating point numbers
 
