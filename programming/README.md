@@ -1,6 +1,7 @@
 
 
 - [Latency Numbers Every Programmer Should Know](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
+- [What you never wanted to know about floating point but will be forced to find out](http://www.volkerschatz.com/science/float.html)
 
 Distributed Systems
 
