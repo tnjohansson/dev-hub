@@ -24,7 +24,7 @@ The following benchmark numbers are from [userbenchmark](http://www.userbenchmar
 | PCIe SSD disk   | [960 PRO NVMe M.2 1TB](http://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-850-pro-2-5-sata-iii-1tb-mz-7ke1t0bw)     | 2,206 MB/s   | 1,696 MB/s  | 42.8 MB/s   | 133 MB/s     |
 | RAM             | [16GB DDR4 DRAM](http://www.corsair.com/en-us/vengeance-lpx-16gb-2x8gb-ddr4-dram-3000mhz-c15-memory-kit-black-cmk16gx4m2b3000c15)          | 31,400 MB/s  | 30,700 MB/s |             |              |
 
-[1] Random read/write in 4k chunks
+_[1] Random read/write in 4k chunks_
 
 ## CPU
 
@@ -41,6 +41,17 @@ Most developers consider memory as RAM only but it is important to take CPU cach
 CPU caches consists of small amounts of very fast memory tightly coupled with the CPU. The memory is read in cache lines from the main memory and both reads and writes are cached. Read [this](https://www.akkadia.org/drepper/cpumemory.pdf) excellent paper for a deep dive.
 
 Code with highly random memory access patterns can cause a high CPU cache eviction rate.
+
+The following table lists the cache sizes for an [Intel Skylake](http://www.7-cpu.com/cpu/Skylake.html) processor
+
+| Cache    | Size     | Acc. Latency     |
+| -------- | -------- | ---------------- |
+| L1       | 32  KB   | 4ns              |
+| L2       | 256 KB   | 8ns              |
+| L3       | 8 MB     | 57ns             |
+| RAM      | > GB     | 120ns [1]        |
+
+_[1] RAM is only accessed if none of the caches holds the data. So for RAM access the latency is L1+L2+L3+51ns=120ns_
 
 ### Memory
 
