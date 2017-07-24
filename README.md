@@ -11,13 +11,26 @@ Random throughts and reminders
 
 Floating point numbers (_such as float/decimal_) represents values as an aproximation in many cases. For example `(1/3+1/12+1/8+1/30) = 0.6083333332` is represented as a Java double as `0.6083333333333333` and as a Java float as `0.60833335`. Read [this](http://www.volkerschatz.com/science/float.html) to understand the pitfalls of using floats.  
 
-## Hardware
+# Hardware
+
+# IO
+
+The following benchmark numbers are from [userbenchmark](http://www.userbenchmark.com) and is shown as a representative comparison between different technologies.
+
+| Type            | Repr. Device                                                                                                                               | Seq. Read    | Seq. Write  | 4K Read [1] | 4K Write [1]  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |------------- | ----------- | ----------- | ------------ |
+| Mechanical disk | [WD WD6001FZWX 6TB](http://hdd.userbenchmark.com/WD-Black-6TB-2015/Rating/3519)                                                            | 217 MB/s     | 248 MB/s    | 7.31 MB/s   | 3.3 MB/s     |
+| SATA SSD disk   | [2.5" SATA III 1TB](http://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-850-pro-2-5-sata-iii-1tb-mz-7ke1t0bw)        | 530 MB/s     | 505 MB/s    | 32.3 MB/s   | 87.7 MB/s    |
+| PCIe SSD disk   | [960 PRO NVMe M.2 1TB](http://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-850-pro-2-5-sata-iii-1tb-mz-7ke1t0bw)     | 2,206 MB/s   | 1,696 MB/s  | 42.8 MB/s   | 133 MB/s     |
+| RAM             | [16GB DDR4 DRAM](http://www.corsair.com/en-us/vengeance-lpx-16gb-2x8gb-ddr4-dram-3000mhz-c15-memory-kit-black-cmk16gx4m2b3000c15)          | 31,400 MB/s  | 30,700 MB/s |             |              |
+
+[1] Random read/write in 4k chunks
 
 ## CPU
 
 ### CPU Caches
 
-Most developers consider memory as RAM only but it is important to take CPU caches into account. With good code and data locality the CPU cache can have an significant impact on performance. Consider the following [latency numbers](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
+Most developers consider memory as RAM only but it is important to take CPU caches into account. With good code/data locality the CPU cache can have an significant impact on performance. Consider the following [latency numbers](https://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html)
 
 | Action                 | Latency |
 | ---------------------- | ------- |
