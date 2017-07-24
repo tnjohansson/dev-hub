@@ -3,6 +3,11 @@
 - [A collection of links for streaming algorithms and data structures](https://gist.github.com/debasishg/8172796)
 - [Everything You Always Wanted to Know About Fsync](http://blog.httrack.com/blog/2013/11/15/everything-you-always-wanted-to-know-about-fsync/)
 
+https://www.stephanboyer.com/post/132/what-are-covariance-and-contravariance
+
+https://sadanand-singh.github.io/posts/treebasedmodels/
+https://dev.to/vaidehijoshi/counting-linearly-with-counting-sort
+
 Random throughts and reminders
 
 # Programming
