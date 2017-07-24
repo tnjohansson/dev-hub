@@ -11,13 +11,44 @@ Random throughts and reminders
 
 Floating point numbers (_such as float/decimal_) represents values as an aproximation in many cases. For example `(1/3+1/12+1/8+1/30) = 0.6083333332` is represented as a Java double as `0.6083333333333333` and as a Java float as `0.60833335`. Read [this](http://www.volkerschatz.com/science/float.html) to understand the pitfalls of using floats.  
 
+## Value types please
+
+The day the JVM supports [value types](http://www.jesperdj.com/2015/10/04/project-valhalla-value-types) will be a good day! Structs will enable more efficient code as GC/memory pressure is likely to improve. Simple things as less pointer chasing and better [CPU cache utilization](http://jacksondunstan.com/articles/3399) would help.
+
+## Class layout matters
+
+[This](http://psy-lob-saw.blogspot.co.uk/2013/05/know-thy-java-object-memory-layout.html) article has an interesting section about improving the likelihood of fields in a class ending up on the same cache line.  
+
+``` java
+public abstract class AbstractHistogram implements Serializable {
+  // "Cold" accessed fields. Not used in the recording code path:
+  long highestTrackableValue;
+  int numberOfSignificantValueDigits;
+
+  int bucketCount;
+  int subBucketCount;
+  int countsArrayLength;
+
+  HistogramData histogramData;
+
+  // Bunch "Hot" accessed fields (used in the the value recording code path) here, near the end, so
+  // that they will have a good chance of ending up in the same cache line as the counts array reference
+  // field that subclass implementations will add.
+  int subBucketHalfCountMagnitude;
+  int subBucketHalfCount;
+  long subBucketMask;  
+}
+```
+
+Use a tool like [Java Object Layout](http://openjdk.java.net/projects/code-tools/jol) to explore the layout of an JVM class.
+
 # Hardware
 
 # IO
 
 The following benchmark numbers are from [userbenchmark](http://www.userbenchmark.com) and is shown as a representative comparison between different technologies.
 
-| Type            | Repr. Device                                                                                                                               | Seq. Read    | Seq. Write  | 4K Read [1] | 4K Write [1]  |
+| Type            | Repr. Device                                                                                                                               | Seq. Read    | Seq. Write  | 4K Read [1] | 4K Write [1] |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |------------- | ----------- | ----------- | ------------ |
 | Mechanical disk | [WD WD6001FZWX 6TB](http://hdd.userbenchmark.com/WD-Black-6TB-2015/Rating/3519)                                                            | 217 MB/s     | 248 MB/s    | 7.31 MB/s   | 3.3 MB/s     |
 | SATA SSD disk   | [2.5" SATA III 1TB](http://www.samsung.com/us/computing/memory-storage/solid-state-drives/ssd-850-pro-2-5-sata-iii-1tb-mz-7ke1t0bw)        | 530 MB/s     | 505 MB/s    | 32.3 MB/s   | 87.7 MB/s    |
@@ -57,6 +88,9 @@ The only known profiler which will identify cache misses is [Intel VTune Perform
 
 ### Memory
 
+https://mechanical-sympathy.blogspot.co.uk/2011/07/false-sharing.html
+
+
 TODO: http://blog.omega-prime.co.uk/?p=197
 TODO: https://en.wikipedia.org/wiki/Data_structure_alignment
 TODO: https://en.wikipedia.org/wiki/Translation_lookaside_buffer
@@ -82,6 +116,8 @@ Non-equality joins commonly called theta joins are hard to distribute. **1-bucke
 Hash functions can be one way which is fundamental for [hashing passwords](https://security.stackexchange.com/questions/11717/why-are-hash-functions-one-way-if-i-know-the-algorithm-why-cant-i-calculate-t). Check [this](http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software) for how a hash is calculated.
 
 # Data structures
+
+[HdrHistogram](https://github.com/HdrHistogram/HdrHistogram)
 
 ## CRDTs
 
