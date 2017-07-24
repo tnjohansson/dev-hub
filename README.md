@@ -42,7 +42,7 @@ CPU caches consists of small amounts of very fast memory tightly coupled with th
 
 Code with highly random memory access patterns can cause a high CPU cache eviction rate.
 
-The following table lists the cache sizes for an [Intel Skylake](http://www.7-cpu.com/cpu/Skylake.html) processor
+The following table lists the cache sizes and latencies for an [Intel Skylake](http://www.7-cpu.com/cpu/Skylake.html) processor
 
 | Cache    | Size     | Acc. Latency     |
 | -------- | -------- | ---------------- |
@@ -52,6 +52,8 @@ The following table lists the cache sizes for an [Intel Skylake](http://www.7-cp
 | RAM      | > GB     | 120ns [1]        |
 
 _[1] RAM is only accessed if none of the caches holds the data. So for RAM access the latency is L1+L2+L3+51ns=120ns_
+
+The only known profiler which will identify cache misses is [Intel VTune Performance Analyzer](https://software.intel.com/en-us/intel-vtune-amplifier-xe). On Linux the [perf](https://developers.redhat.com/blog/2014/03/10/determining-whether-an-application-has-poor-cache-performance-2) or [papi](http://icl.cs.utk.edu/papi) can be used. And [PCM](https://github.com/opcm/pcm) looks interesting.
 
 ### Memory
 
