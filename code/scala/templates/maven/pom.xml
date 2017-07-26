@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <properties>
+        <scala.mavenPlugin.version>3.2.2</scala.mavenPlugin.version>
+        <encoding>UTF-8</encoding>
+        <scala.version>2.11.7</scala.version>
+        <scala.version.deps>2.11</scala.version.deps>
+        <akka.version>2.4.12</akka.version>
+        <arguments/>
+    </properties>
+
+    <groupId>com.tnjohansson.template</groupId>
+    <artifactId>template</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+    <inceptionYear>2017</inceptionYear>
+
+    <description>Maven template</description>
+
+    <organization>
+        <name>tnjohansson Ltd</name>
+        <url>http://tnjohansson.io</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>tnjohansson</id>
+            <name>Tobias Johansson</name>
+            <email>me@tnjohansson.io</email>
+            <url>https://github.com/tnjohansson</url>
+            <organization>Tnjohansson Ltd</organization>
+            <organizationUrl>http://www.tnjohansson.io</organizationUrl>
+            <timezone>Europe</timezone>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/tnjohansson/dev-hub/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/tnjohansson/dev-hub</url>
+        <connection>scm:git:https://github.com/tnjohansson/dev-hub.git</connection>
+        <developerConnection>scm:git:https://github.com/tnjohansson/dev-hub.git</developerConnection>
+        <tag>master</tag>
+    </scm>
+
+    <repositories>
+        <repository>
+            <id>TypesafeReleases</id>
+            <name>Typesafe Releases</name>
+            <url>http://repo.typesafe.com/typesafe/releases/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>repo1</id>
+            <name>repo1</name>
+            <url>http://repo1.maven.org/maven2/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>SonatypeOSSSnapshots</id>
+            <name>Sonatype OSS Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+
+        <!-- UNIVERSAL DEPENDENCIES -->
+        <!-- TESTING -->
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.version.deps}</artifactId>
+            <scope>test</scope>
+            <version>3.0.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <pluginManagement>
+            <plugins>
+                <!-- Compiler -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.5.1</version>
+                </plugin>
+                <!-- Scala -->
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>2.15.2</version>
+                </plugin>
+                <!-- Integration Tests -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+                <!-- JUnit Tests (disabled) See http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.scalatest</groupId>
+                    <artifactId>scalatest-maven-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+                <!-- Include the source with the project -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.0.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <!-- Plugins used in all projects -->
+        <plugins>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <configuration>
+                    <jvmArgs>
+                        <jvmArg>-Xms512m</jvmArg>
+                        <jvmArg>-Xmx1024m</jvmArg>
+                    </jvmArgs>
+                    <args>
+                        <arg>-encoding</arg>
+                        <arg>UTF-8</arg>
+                        <arg>-deprecation</arg>
+                        <arg>-unchecked</arg>
+                        <arg>-feature</arg>
+                        <arg>-language:postfixOps</arg>
+                        <arg>-target:jvm-1.8</arg>
+                        <arg>-Yno-adapted-args</arg>
+                        <!--<arg>-Ywarn-value-discard</arg>-->
+                    </args>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <testSource>1.8</testSource>
+                    <testTarget>1.8</testTarget>
+                    <compilerArgs>
+                        <arg>-Xlint:unchecked</arg>
+                        <arg>-Xlint:deprecation</arg>
+                    </compilerArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Include the source with the project -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <!-- Only run at the root module -->
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>build</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <target>
+                                <copy file="README.md.tmpl" tofile="README.md">
+                                    <filterset>
+                                        <filter token="VERSION" value="${project.version}"/>
+                                    </filterset>
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>modules/core</module>
+        <module>modules/benchmarks</module>
+  </modules>
+
+</project>
