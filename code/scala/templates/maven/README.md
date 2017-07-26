@@ -5,12 +5,7 @@
 > Maven
 > ```
 > <dependency>
->    <groupId>com.itrsgroup.cluster</groupId>
->    <artifactId>baseline</artifactId>
->    <version>0.0.1</version>
-> </dependency>
-> <dependency>
->    <groupId>com.itrsgroup.cluster</groupId>
+>    <groupId>tnjohansson.template</groupId>
 >    <artifactId>core</artifactId>
 >    <version>0.0.1</version>
 > </dependency>
@@ -18,9 +13,8 @@
 >
 > SBT
 >
-> `libraryDependencies += "com.itrsgroup.cluster" % "baseline" % "0.0.1"`
+> `libraryDependencies += "com.tnjohansson.template" % "core" % "0.0.1"`
 >
-> `libraryDependencies += "com.itrsgroup.cluster" % "core" % "0.0.1"`
 >
 
 ## License report
