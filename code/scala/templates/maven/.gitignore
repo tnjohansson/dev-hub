@@ -16,3 +16,4 @@ buildNumber.properties
 
 .idea/
 etc/license_report.md
+*.iml
