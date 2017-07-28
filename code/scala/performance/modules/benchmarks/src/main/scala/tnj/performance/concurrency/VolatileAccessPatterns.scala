@@ -12,13 +12,33 @@ import scala.concurrent.{Await, Future}
 @BenchmarkMode(Array(Mode.Throughput))
 @OutputTimeUnit(TimeUnit.SECONDS)
 @Fork(1)
-@Threads(Threads.MAX)
+@Threads(1)
 @Warmup(iterations = 2, time = 1, timeUnit = TimeUnit.SECONDS, batchSize = 1)
 @Measurement(iterations = 5)
 class VolatileAccessPatterns {
 
   private val nrThreads = 2
   private val iterations = 10000000
+
+  @Benchmark
+  @OperationsPerInvocation(10000000)
+  def objectVolatileNoThreading(): Any = {
+    val state = ObjectVolatile
+    for (i <- 0 to iterations) {
+      ObjectVolatile.cursor = i
+    }
+    assert(state.cursor == iterations, state.cursor)
+  }
+
+  @Benchmark
+  @OperationsPerInvocation(10000000)
+  def classVolatileNoThreading(): Any = {
+    val state = new PublicClassVolatile()
+    for (i <- 0 to iterations) {
+      state.cursor = i
+    }
+    assert(state.cursor == iterations, state.cursor)
+  }
 
   @Benchmark
   @OperationsPerInvocation(10000000)
@@ -84,39 +104,38 @@ class VolatileAccessPatterns {
 
     Await.result(Future.sequence(f), Duration.Inf)
   }
+}
 
-  object ObjectVolatile {
-    @volatile var cursor: Long = 0
+object ObjectVolatile {
+  @volatile var cursor: Long = 0
+}
+
+object PrivateObjectVolatile {
+  @volatile private var cursor: Long = 0
+
+  def set(v: Long): Unit = {
+    cursor = v
   }
+}
 
-  object PrivateObjectVolatile {
-    @volatile private var cursor: Long = 0
+class PublicClassVolatile {
+  @volatile var cursor: Long = 0
+}
 
-    def set(v: Long): Unit = {
-      cursor = v
-    }
+class PrivateClassVolatile {
+  @volatile private var cursor: Long = 0
+
+  def set(v: Long): Unit = {
+    cursor = v
   }
+}
 
-  class PublicClassVolatile {
-    @volatile var cursor: Long = 0
+class PrivateThisClassVolatile {
+  @volatile private[this] var cursor: Long = 0
+
+  def set(v: Long): Unit = {
+    cursor = v
   }
-
-  class PrivateClassVolatile {
-    @volatile private var cursor: Long = 0
-
-    def set(v: Long): Unit = {
-      cursor = v
-    }
-  }
-
-  class PrivateThisClassVolatile {
-    @volatile private[this] var cursor: Long = 0
-
-    def set(v: Long): Unit = {
-      cursor = v
-    }
-  }
-
 }
 
 
