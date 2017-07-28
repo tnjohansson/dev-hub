@@ -1,7 +1,7 @@
 This benchmark checks if different access patterns for volatile fields defined in objects/classes matters in a multi-threaded 
 context. The volatile field is defined in the following ways;
 
-``` json
+``` java
 object ObjectVolatile {
   @volatile var cursor: Long = 0
 }
