@@ -1,0 +1,2 @@
+#!/bin/bash
+license_finder report --project-path .. --save license_report.md --format markdown --columns name version authors licenses approved summary description homepage install_path package_manager groups
