@@ -10,6 +10,17 @@ https://dev.to/vaidehijoshi/counting-linearly-with-counting-sort
 
 Random throughts and reminders
 
+# Stuff most people ignore 
+
+## Why specs are important and why we need details 
+
+Eveyone agrees we need it, but no one hardly ever do it to the details required. As a developer, refuse to work on a large piece of work if it doesn't has a spec. Read the following: 
+
+- [Why Bother](https://www.joelonsoftware.com/2000/10/02/painless-functional-specifications-part-1-why-bother/)
+- [What's a Spec](https://www.joelonsoftware.com/2000/10/03/painless-functional-specifications-part-2-whats-a-spec/)
+- [But.. How](https://www.joelonsoftware.com/2000/10/04/painless-functional-specifications-part-3-but-how/)
+- [Tips](https://www.joelonsoftware.com/2000/10/15/painless-functional-specifications-part-4-tips/)
+
 # Programming
 
 ## Floating point numbers
