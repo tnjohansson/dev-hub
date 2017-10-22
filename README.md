@@ -102,7 +102,12 @@ _[1] RAM is only accessed if none of the caches holds the data. So for RAM acces
 
 The only known profiler which will identify cache misses is [Intel VTune Performance Analyzer](https://software.intel.com/en-us/intel-vtune-amplifier-xe). On Linux the [perf](https://developers.redhat.com/blog/2014/03/10/determining-whether-an-application-has-poor-cache-performance-2) or [papi](http://icl.cs.utk.edu/papi) can be used. And [PCM](https://github.com/opcm/pcm) looks interesting.
 
+**References**
+- [A Survey of CPU Caches](https://meribold.github.io/2017/10/20/survey-of-cpu-caches/)
+
 ### Memory
+
+The well known and often referenced [What Every Programmer Should Know About Memory](https://www.akkadia.org/drepper/cpumemory.pdf) is a must read for everyone.
 
 https://mechanical-sympathy.blogspot.co.uk/2011/07/false-sharing.html
 
