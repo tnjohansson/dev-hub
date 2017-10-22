@@ -7,9 +7,10 @@
 
 # Files
 
-| Command                               | Info                                                 |
-| ------------------------------------- | ---------------------------------------------------- |
-| du -a \| sort -n -r \| head -n 5        | Lists top 5 largest folders in the current directory |
+| Command                                  | Info                                                 |
+| ---------------------------------------- | ---------------------------------------------------- |
+| du -a \| sort -n -r \| head -n 5         | Lists top 5 largest folders in the current directory |
+| rsync -a -r -v <source dir> <target dir> | Syncs folders using rsync                            |
 
 
 
